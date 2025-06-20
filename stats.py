@@ -1,11 +1,14 @@
 def get_book_words(file_contents):
       list = file_contents.split()
       num_words = len(list)
-      print(f"{num_words} words found in the document")
+      print(f"Found {num_words} total words")
 
 def lower(file_contents):
-      char_set = set()
       lowered = file_contents.lower()
+      return lowered
+
+def char_set(lowered):
+      char_set = set()
       for char in lowered:
             char_set.add(char)
       return char_set
@@ -21,5 +24,17 @@ def update_dict(dict, file_contents):
             for key in dict:
                   if word == key:
                         dict[key] += 1
-      print(dict)
       return dict
+
+def sort(dict):
+      
+      list1 = []
+      for entry in dict:
+            small_dict = {}
+            small_dict["char"] = entry
+            small_dict["num"] = dict[entry]
+            list1.append(small_dict)
+      return(list1)
+
+def sort_on(dict):
+      return dict["num"]
