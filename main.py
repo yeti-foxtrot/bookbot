@@ -8,8 +8,14 @@ def get_book_text(filepath):
               return file_contents
 
 def main():
-       
-    x = get_book_text("books/frankenstein1.txt")
+
+    
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    filepath = sys.argv[1]
+    x = get_book_text(filepath)
     
     y = lower(x)
     z = char_set(y)
@@ -19,7 +25,7 @@ def main():
     ac.sort(reverse=True, key=sort_on)
 
     print("=====================BOOKBOT=====================")
-    print("Analyzing book found at books/frankenstein.txt...")
+    print(f"Analyzing book found at {filepath}")
     print("------------------- Word Count ------------------")
     get_book_words(x)
     print("-----------------Character Count-----------------")
